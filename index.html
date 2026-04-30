@@ -16,7 +16,7 @@
   .font-display{font-family:'Fraunces',serif;letter-spacing:-0.025em;}
   .font-mono{font-family:'JetBrains Mono',monospace;}
   .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;font-weight:600;}
-  .js-ready [data-reveal]{opacity:0;transform:translateY(24px);animation:autoreveal 1.4s ease-out 1.6s forwards;}
+  .js-ready [data-reveal]{opacity:0;transform:translateY(16px);animation:autoreveal .5s ease-out .15s forwards;}
   @keyframes autoreveal{to{opacity:1;transform:translateY(0)}}
   .scrim{position:absolute;inset:0;pointer-events:none;background:
     linear-gradient(180deg, rgba(13,31,60,.55) 0%, rgba(13,31,60,.18) 22%, transparent 45%, transparent 55%, rgba(13,31,60,.4) 82%, rgba(13,31,60,.78) 100%),
@@ -324,7 +324,7 @@ requestAnimationFrame(raf);
 // Reveals
 inView('[data-reveal]', el => {
   animate(el, { opacity:[0,1], transform:['translateY(24px)','translateY(0)'] },
-          { duration:0.9, easing:[0.2,0.7,0.2,1] });
+          { duration:0.5, easing:[0.2,0.7,0.2,1] });
 }, { margin: '0px 0px -10% 0px' });
 
 // Hero parallax
