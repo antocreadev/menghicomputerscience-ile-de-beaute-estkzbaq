@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ile de Beauté : restaurant face au port de Calvi</title>
+<meta name="description" content="Bistrot corse face au port de plaisance de Calvi. Cuisine généreuse, deux services chaque jour, terrasse qui s'allume au crépuscule."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Manrope:wght@400;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { bg:'#F5EFE6', ink:'#0D1F3C', 'ink-2':'#5C6577', accent:'#D4935A', line:'#E4D8C4', volet:'#3A6EA5' },
+      fontFamily: { display:['Fraunces','serif'], sans:['Manrope','system-ui','sans-serif'], mono:['"JetBrains Mono"','monospace'] }
+    }
+  }
+}
+</script>
+<style>
+  :root{--bg:#F5EFE6;--ink:#0D1F3C;--ink-2:#5C6577;--accent:#D4935A;--line:#E4D8C4;--volet:#3A6EA5;}
+  html,body{background:var(--bg);color:var(--ink);}
+  body{font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  .font-display{font-family:'Fraunces',serif;letter-spacing:-0.025em;}
+  .font-mono{font-family:'JetBrains Mono',monospace;}
+  .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;font-weight:600;}
+  [data-reveal]{opacity:0;transform:translateY(24px);}
+  .scrim{position:absolute;inset:0;pointer-events:none;background:
+    linear-gradient(180deg, rgba(13,31,60,.55) 0%, rgba(13,31,60,.18) 22%, transparent 45%, transparent 55%, rgba(13,31,60,.4) 82%, rgba(13,31,60,.78) 100%),
+    radial-gradient(60% 45% at 50% 52%, rgba(13,31,60,.42) 0%, transparent 70%);}
+  .hero-img{filter:brightness(.94) saturate(1.05) contrast(1.03);}
+  .hero-text *{text-shadow:0 1px 2px rgba(0,0,0,.5), 0 2px 18px rgba(0,0,0,.35);}
+  .chip{background:rgba(13,31,60,.42);backdrop-filter:blur(6px);color:#fff;padding:.55rem 1rem;border-radius:999px;font-size:.82rem;}
+  .marquee{animation:marquee 50s linear infinite;}
+  .marquee:hover{animation-play-state:paused;}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .chip-pulse{animation:chippulse 8s ease-in-out infinite;}
+  @keyframes chippulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+  .card-plat{transition:transform .26s ease, box-shadow .26s ease;}
+  .card-plat:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:0 18px 40px -20px rgba(13,31,60,.3);}
+  .strip{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
+  .strip > *{scroll-snap-align:center;}
+  .underline-accent{background-image:linear-gradient(var(--accent),var(--accent));background-size:100% 2px;background-repeat:no-repeat;background-position:0 100%;padding-bottom:2px;}
+  .nav-blur{backdrop-filter:blur(12px);background:rgba(245,239,230,.72);}
+  .sundial{position:fixed;left:1rem;top:50%;transform:translateY(-50%);z-index:30;}
+  @media (max-width:900px){.sundial{position:fixed;left:auto;right:.75rem;top:5rem;transform:none;}}
+  .word-vedette{font-size:clamp(3rem,12vw,7rem);line-height:.95;}
+  .outline-word{-webkit-text-stroke:1.5px var(--ink);color:transparent;}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-40 nav-blur border-b border-line/60">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-4">
+    <a href="#top" class="font-display text-xl sm:text-2xl text-ink">Ile de Beauté</a>
+    <div class="flex items-center gap-3">
+      <span id="service-chip" class="chip-pulse hidden sm:inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-full border border-line bg-white/60 text-ink">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+        <span id="service-chip-text">Service en préparation</span>
+      </span>
+      <a href="tel:+33495650269" class="text-sm font-semibold px-4 py-2 rounded-full bg-ink text-bg hover:bg-accent hover:text-ink transition">04 95 65 02 69</a>
+    </div>
+  </div>
+</header>
+
+<!-- SUNDIAL SVG (sticky) -->
+<div class="sundial" aria-hidden="true">
+  <svg id="sundial" width="68" height="68" viewBox="0 0 68 68">
+    <circle cx="34" cy="34" r="30" fill="none" stroke="#E4D8C4" stroke-width="1.2"/>
+    <circle cx="34" cy="34" r="30" fill="none" stroke="#0D1F3C" stroke-width="1" stroke-dasharray="2 6" opacity=".35"/>
+    <text x="34" y="11" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#5C6577">12h</text>
+    <text x="62" y="36" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#5C6577">17h</text>
+    <text x="34" y="62" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#5C6577">22h</text>
+    <g id="sundial-hand" transform="rotate(-90 34 34)">
+      <line x1="34" y1="34" x2="34" y2="9" stroke="#0D1F3C" stroke-width="1.4" stroke-linecap="round"/>
+      <circle id="sundial-bead" cx="34" cy="9" r="4.5" fill="#D4935A"/>
+    </g>
+    <circle cx="34" cy="34" r="2.2" fill="#0D1F3C"/>
+  </svg>
+  <div id="sundial-time" class="text-center mt-2 font-mono text-[10px] text-ink-2">12:00</div>
+</div>
+
+<main id="top">
+
+<!-- HERO diurne / nocturne -->
+<section id="hero" class="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
+  <img id="hero-image" class="hero-img absolute inset-0 w-full h-full object-cover" src="./assets/images/terrasse-port-calvi.jpg" alt="Terrasse de l'Ile de Beauté de jour, voiliers du port de Calvi" loading="eager" fetchpriority="high"/>
+  <img id="hero-night" class="hero-img absolute inset-0 w-full h-full object-cover" style="opacity:0" src="./assets/images/terrasse-sur-le-port.jpg" alt="Terrasse animée le soir, lampions allumés"/>
+  <div class="scrim"></div>
+  <div class="hero-text relative z-10 h-full max-w-7xl mx-auto px-6 sm:px-10 flex flex-col justify-end pb-16 sm:pb-24 text-white">
+    <div data-reveal class="eyebrow text-[#FFE7B8] mb-5">Restaurant · Quai Adolphe Landry · Calvi</div>
+    <h1 data-reveal class="font-display font-light leading-[0.95]" style="font-size:clamp(2.6rem,8vw,5.6rem);">Le quai s'allume.</h1>
+    <p data-reveal class="mt-6 max-w-2xl text-base sm:text-lg text-white/95 leading-relaxed">Bistrot face au port de plaisance, à deux pas de la Citadelle. Cuisine corse et française, deux services chaque jour, une terrasse qui change de visage entre midi et minuit.</p>
+    <div data-reveal class="mt-8 flex flex-wrap gap-3 items-center">
+      <a href="tel:+33495650269" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-ink font-semibold hover:bg-white transition">Réserver : 04 95 65 02 69</a>
+      <a href="#carte" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/70 text-white hover:bg-white/10 transition">Voir la carte</a>
+    </div>
+    <div data-reveal class="mt-8 flex flex-wrap gap-2">
+      <span class="chip">4,5 sur 5 · 991 avis Google</span>
+      <span class="chip">Travelers' Choice 2025</span>
+      <span class="chip">Top 1 Calvi sur RestaurantGuru</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE horaire -->
+<section aria-label="Rythme du service" class="bg-ink text-accent py-4 overflow-hidden border-y border-ink">
+  <div class="marquee flex gap-12 whitespace-nowrap font-mono text-sm sm:text-base">
+    <span>12h00 · service midi</span><span>·</span><span>14h00 · dernière commande</span><span>·</span><span>19h00 · service soir</span><span>·</span><span>22h00 · dernier verre</span><span>·</span><span>Ouvert tous les jours</span><span>·</span>
+    <span>12h00 · service midi</span><span>·</span><span>14h00 · dernière commande</span><span>·</span><span>19h00 · service soir</span><span>·</span><span>22h00 · dernier verre</span><span>·</span><span>Ouvert tous les jours</span><span>·</span>
+  </div>
+</section>
+
+<!-- L'HEURE DU MIDI -->
+<section class="py-20 sm:py-32">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+    <div data-reveal class="lg:col-span-7 relative">
+      <img class="w-full h-[480px] sm:h-[560px] object-cover rounded-2xl" src="./assets/images/terrasse-port-calvi.jpg" alt="Terrasse diurne face aux voiliers"/>
+      <div class="absolute bottom-4 left-4 chip" style="background:rgba(245,239,230,.85);color:#0D1F3C;backdrop-filter:blur(4px);">12h00, le port respire</div>
+    </div>
+    <div class="lg:col-span-5">
+      <div data-reveal class="eyebrow text-ink-2 mb-4">L'heure du midi</div>
+      <h2 data-reveal class="font-display font-light text-ink leading-[1.05]" style="font-size:clamp(1.9rem,4.5vw,3.2rem);">Le midi, le port <em class="italic underline-accent">respire</em>.</h2>
+      <p data-reveal class="mt-6 text-ink-2 text-lg leading-relaxed">Pavés tièdes, voiliers qui dansent, parasols ouverts. C'est l'heure du déjeuner sans hâte, des plats généreux et des verres bien frais, face à la Citadelle qui veille.</p>
+      <div data-reveal class="mt-10 grid grid-cols-3 gap-6">
+        <div>
+          <div class="font-display text-4xl sm:text-5xl text-ink">4,5</div>
+          <div class="text-xs text-ink-2 mt-1 font-mono">/ 5 Google</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl sm:text-5xl text-ink">991</div>
+          <div class="text-xs text-ink-2 mt-1 font-mono">avis lus</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl sm:text-5xl text-ink">2025</div>
+          <div class="text-xs text-ink-2 mt-1 font-mono">Travelers' Choice</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTE plats -->
+<section id="carte" class="py-20 sm:py-28 bg-line/30 border-y border-line">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="max-w-3xl">
+      <div data-reveal class="eyebrow text-ink-2 mb-4">À la carte</div>
+      <h2 data-reveal class="font-display font-light text-ink leading-[1.05]" style="font-size:clamp(1.9rem,4.5vw,3.2rem);">Une cuisine généreuse, sans détour.</h2>
+      <p data-reveal class="mt-5 text-ink-2 text-lg">Des produits frais, des saveurs corses et françaises, le geste sûr d'une équipe qui connaît son port.</p>
+    </div>
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <article data-reveal class="card-plat bg-bg rounded-2xl overflow-hidden border border-line">
+        <img class="w-full h-56 object-cover" src="./assets/images/plat-calamars-persillade.jpg" alt="Calamars en persillade"/>
+        <div class="p-5">
+          <h3 class="font-display italic text-2xl text-ink">Calamars persillade</h3>
+          <p class="mt-2 text-sm text-ink-2">Frais du jour, ail, persil, huile chaude.</p>
+        </div>
+      </article>
+      <article data-reveal class="card-plat bg-bg rounded-2xl overflow-hidden border border-line">
+        <img class="w-full h-56 object-cover" src="./assets/images/photo-recent-3.jpg" alt="Travers de viande braisée"/>
+        <div class="p-5">
+          <h3 class="font-display italic text-2xl text-ink">Travers braisé</h3>
+          <p class="mt-2 text-sm text-ink-2">Cuisson lente, légumes rôtis, jus court.</p>
+        </div>
+      </article>
+      <article data-reveal class="card-plat bg-bg rounded-2xl overflow-hidden border border-line">
+        <img class="w-full h-56 object-cover" src="./assets/images/photo-recent-4.jpg" alt="Moules marinières et frites"/>
+        <div class="p-5">
+          <h3 class="font-display italic text-2xl text-ink">Moules marinières</h3>
+          <p class="mt-2 text-sm text-ink-2">Cocotte fumante, frites maison, eau Orezza.</p>
+        </div>
+      </article>
+      <article data-reveal class="card-plat bg-bg rounded-2xl overflow-hidden border border-line">
+        <img class="w-full h-56 object-cover" src="./assets/images/photo-recent-1.jpg" alt="Salade de courgettes en tagliatelles"/>
+        <div class="p-5">
+          <h3 class="font-display italic text-2xl text-ink">Tagliatelles de courgettes</h3>
+          <p class="mt-2 text-sm text-ink-2">Carottes, tomates cerises, graines, fraîcheur de saison.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LE CRÉPUSCULE -->
+<section id="crepuscule" class="relative h-[100svh] min-h-[600px] overflow-hidden">
+  <img id="dusk-day" class="hero-img absolute inset-0 w-full h-full object-cover" src="./assets/images/terrasse-port-calvi.jpg" alt="Terrasse en fin d'après-midi"/>
+  <img id="dusk-night" class="hero-img absolute inset-0 w-full h-full object-cover" style="opacity:0" src="./assets/images/terrasse-sur-le-port.jpg" alt="Terrasse pleine au crépuscule, lampions"/>
+  <div class="scrim"></div>
+  <div class="hero-text relative z-10 h-full max-w-5xl mx-auto px-6 sm:px-10 flex flex-col justify-center text-white">
+    <div data-reveal class="eyebrow text-[#FFE7B8] mb-5">19h00, l'heure dorée</div>
+    <h2 data-reveal class="font-display font-light italic leading-[0.98]" style="font-size:clamp(2.4rem,7vw,5rem);">À 19h, les lampions s'allument.</h2>
+    <p data-reveal class="mt-6 max-w-2xl text-lg text-white/95">Les bateaux rentrent, la terrasse se remplit, la Citadelle prend une teinte orange. Le service du soir commence.</p>
+  </div>
+</section>
+
+<!-- VOIX DU QUAI -->
+<section class="py-24 sm:py-32 bg-ink text-bg relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div data-reveal class="eyebrow text-accent mb-4">Voix du quai</div>
+    <h2 data-reveal class="font-display font-light leading-[1.05] max-w-3xl" style="font-size:clamp(1.9rem,4.5vw,3.2rem);">Ce qu'on dit de nous.</h2>
+    <div class="mt-16 grid lg:grid-cols-12 gap-10">
+      <figure data-reveal class="lg:col-span-7 lg:col-start-1">
+        <div class="text-accent text-lg font-mono">★★★★★</div>
+        <blockquote class="mt-3 font-display italic font-light leading-tight" style="font-size:clamp(1.4rem,2.6vw,2.1rem);">"A superb setting. Excellent cuisine, fresh, generous. Calamars délicieux, daurade, rigatoni au canard."</blockquote>
+        <figcaption class="mt-4 eyebrow text-bg/60">Visiteur · TripAdvisor</figcaption>
+      </figure>
+      <figure data-reveal class="lg:col-span-7 lg:col-start-5">
+        <div class="text-accent text-lg font-mono">★★★★★</div>
+        <blockquote class="mt-3 font-display italic font-light leading-tight" style="font-size:clamp(1.4rem,2.6vw,2.1rem);">"Lovely setting right on the harbour. Boar pâté, ragout de 3 viandes, fiandone. So tasty."</blockquote>
+        <figcaption class="mt-4 eyebrow text-bg/60">Karine L. · RestaurantGuru</figcaption>
+      </figure>
+      <figure data-reveal class="lg:col-span-6 lg:col-start-3">
+        <div class="text-accent text-lg font-mono">★★★★★</div>
+        <blockquote class="mt-3 font-display italic font-light leading-tight" style="font-size:clamp(1.4rem,2.6vw,2.1rem);">"Excellent restaurant, très qualitatif et professionnel. Rapport qualité-prix appréciable."</blockquote>
+        <figcaption class="mt-4 eyebrow text-bg/60">Visiteur FR · TripAdvisor</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- SPÉCIALITÉS CORSES (strip horizontal) -->
+<section class="py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 mb-10">
+    <div data-reveal class="eyebrow text-ink-2 mb-3">Spécialités corses</div>
+    <h2 data-reveal class="font-display font-light text-ink leading-[1.05]" style="font-size:clamp(1.9rem,4.5vw,3.2rem);">Cinq mots, une table.</h2>
+  </div>
+  <div class="strip flex gap-10 overflow-x-auto px-6 sm:px-10 pb-8 snap-x">
+    <div class="shrink-0 w-[80vw] sm:w-[420px] flex flex-col items-start gap-4">
+      <span class="font-display word-vedette text-ink">Sanglier</span>
+      <img class="w-full h-56 object-cover rounded-xl" src="./assets/images/photo-recent-3.jpg" alt="Plat de viande mijotée"/>
+    </div>
+    <div class="shrink-0 w-[80vw] sm:w-[420px] flex flex-col items-start gap-4">
+      <span class="font-display word-vedette outline-word italic">Fiandone</span>
+      <img class="w-full h-56 object-cover rounded-xl" src="./assets/images/photo-recent-1.jpg" alt="Dessert et plats frais"/>
+    </div>
+    <div class="shrink-0 w-[80vw] sm:w-[420px] flex flex-col items-start gap-4">
+      <span class="font-display word-vedette text-ink">Orezza</span>
+      <img class="w-full h-56 object-cover rounded-xl" src="./assets/images/photo-recent-4.jpg" alt="Eau Orezza servie en table"/>
+    </div>
+    <div class="shrink-0 w-[80vw] sm:w-[420px] flex flex-col items-start gap-4">
+      <span class="font-display word-vedette outline-word italic">Daurade</span>
+      <img class="w-full h-56 object-cover rounded-xl" src="./assets/images/assiette-pecheur.jpg" alt="Assiette du pêcheur"/>
+    </div>
+    <div class="shrink-0 w-[80vw] sm:w-[420px] flex flex-col items-start gap-4">
+      <span class="font-display word-vedette text-ink">Persillade</span>
+      <img class="w-full h-56 object-cover rounded-xl" src="./assets/images/plat-calamars-persillade.jpg" alt="Calamars en persillade"/>
+    </div>
+  </div>
+</section>
+
+<!-- TROUVER LE QUAI -->
+<section id="infos" class="py-20 sm:py-28 bg-line/40 border-t border-line">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-5">
+      <div data-reveal class="eyebrow text-ink-2 mb-3">Trouver le quai</div>
+      <h2 data-reveal class="font-display font-light text-ink leading-[1.05]" style="font-size:clamp(1.9rem,4.5vw,3.2rem);">Quai Adolphe Landry, Calvi.</h2>
+      <div data-reveal class="mt-8 space-y-5 text-ink">
+        <div>
+          <div class="eyebrow text-ink-2 mb-1">Adresse</div>
+          <div class="text-lg">Quai Adolphe Landry, 20260 Calvi</div>
+        </div>
+        <div>
+          <div class="eyebrow text-ink-2 mb-1">Horaires</div>
+          <div class="font-mono text-sm leading-relaxed">
+            Tous les jours<br/>
+            12h00 à 14h00 · service midi<br/>
+            19h00 à 22h00 · service soir
+          </div>
+        </div>
+        <div>
+          <div class="eyebrow text-ink-2 mb-1">Réserver</div>
+          <a href="tel:+33495650269" class="font-display text-4xl sm:text-5xl text-accent hover:text-ink transition">04 95 65 02 69</a>
+        </div>
+      </div>
+      <div data-reveal class="mt-8 flex flex-wrap gap-3">
+        <a href="tel:+33495650269" class="px-5 py-3 rounded-full bg-ink text-bg font-semibold hover:bg-accent hover:text-ink transition">Appeler maintenant</a>
+        <a href="https://maps.google.com/maps?q=42.566297299999995,8.758126899999999" target="_blank" rel="noopener" class="px-5 py-3 rounded-full border border-ink text-ink hover:bg-ink hover:text-bg transition">Tracer l'itinéraire</a>
+      </div>
+    </div>
+    <div data-reveal class="lg:col-span-7">
+      <iframe title="Plan d'accès Ile de Beauté Calvi" loading="lazy" style="border:0;border-radius:16px;width:100%;height:520px;" src="https://maps.google.com/maps?q=42.566297299999995,8.758126899999999&z=16&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-bg pt-20 pb-10 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div data-reveal class="font-display font-light leading-[0.9]" style="font-size:clamp(3.5rem,16vw,12rem);">Ile de Beauté</div>
+    <div class="mt-10 grid sm:grid-cols-3 gap-8 text-sm text-bg/80">
+      <div>
+        <div class="eyebrow text-accent mb-2">Adresse</div>
+        Quai Adolphe Landry<br/>20260 Calvi
+      </div>
+      <div>
+        <div class="eyebrow text-accent mb-2">Réservation</div>
+        <a href="tel:+33495650269" class="hover:text-accent">04 95 65 02 69</a><br/>
+        Tous les jours · midi et soir
+      </div>
+      <div>
+        <div class="eyebrow text-accent mb-2">Distinctions</div>
+        4,5 sur 5 · 991 avis Google<br/>
+        Travelers' Choice 2025<br/>
+        Top 1 Calvi (RestaurantGuru)
+      </div>
+    </div>
+    <div class="mt-14 pt-6 border-t border-bg/15 text-xs text-bg/60 flex flex-wrap gap-4 justify-between">
+      <div>Site réalisé avec soin par Menghi Computer Science.</div>
+      <div class="flex flex-wrap gap-4">
+        <span>Anto</span>
+        <a href="mailto:menghicomputerscience@gmail.com" class="hover:text-accent">menghicomputerscience@gmail.com</a>
+        <a href="tel:+33643879114" class="hover:text-accent">06 43 87 91 14</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+import { animate, inView, scroll } from 'https://cdn.jsdelivr.net/npm/motion@10.18.0/+esm';
+import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/+esm';
+
+const lenis = new Lenis({ lerp: 0.08 });
+function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+// Reveals
+inView('[data-reveal]', el => {
+  animate(el, { opacity:[0,1], transform:['translateY(24px)','translateY(0)'] },
+          { duration:0.9, easing:[0.2,0.7,0.2,1] });
+}, { margin: '0px 0px -10% 0px' });
+
+// Hero parallax
+const heroImg = document.querySelector('#hero-image');
+const heroNight = document.querySelector('#hero-night');
+const heroSection = document.querySelector('#hero');
+if (heroImg && heroSection) {
+  scroll(animate(heroImg, { transform:['translateY(0%)','translateY(8%)'] }),
+    { target: heroSection, offset:['start start','end start'] });
+  // Cross-fade jour -> nuit dans le hero
+  scroll(animate(heroNight, { opacity:[0,1] }),
+    { target: heroSection, offset:['start start','end start'] });
+}
+
+// Cross-fade crépuscule
+const dusk = document.querySelector('#crepuscule');
+const duskNight = document.querySelector('#dusk-night');
+if (dusk && duskNight) {
+  scroll(animate(duskNight, { opacity:[0,1] }),
+    { target: dusk, offset:['start end','end start'] });
+}
+
+// Cadran solaire scroll-driven : -90° (12h) -> +90° (22h), bead or -> bleu
+const hand = document.querySelector('#sundial-hand');
+const bead = document.querySelector('#sundial-bead');
+const timeLabel = document.querySelector('#sundial-time');
+if (hand) {
+  scroll(({ y }) => {
+    const max = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+    const p = Math.max(0, Math.min(1, y.current / max));
+    const angle = -90 + p * 180;
+    hand.setAttribute('transform', `rotate(${angle} 34 34)`);
+    // Couleur du bead : or -> bleu nuit
+    const r = Math.round(0xD4 + (0x0D - 0xD4) * p);
+    const g = Math.round(0x93 + (0x1F - 0x93) * p);
+    const b = Math.round(0x5A + (0x3C - 0x5A) * p);
+    if (bead) bead.setAttribute('fill', `rgb(${r},${g},${b})`);
+    // Heure fictive 12h -> 22h
+    const totalMin = 12*60 + p * (10*60);
+    const hh = Math.floor(totalMin/60);
+    const mm = Math.floor(totalMin%60);
+    if (timeLabel) timeLabel.textContent = `${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;
+  });
+}
+
+// Chip horaire dynamique selon heure visiteur
+function updateServiceChip(){
+  const el = document.getElementById('service-chip-text');
+  if (!el) return;
+  const now = new Date();
+  const h = now.getHours();
+  const m = now.getMinutes();
+  const t = h + m/60;
+  let label;
+  if (t >= 12 && t < 14) label = 'Service midi en cours';
+  else if (t >= 14 && t < 19) label = 'Service soir : 19h00';
+  else if (t >= 19 && t < 22) label = 'Service soir en cours';
+  else if (t >= 22 || t < 8) label = 'Demain : service midi 12h00';
+  else label = 'Service midi : 12h00';
+  el.textContent = label;
+}
+updateServiceChip();
+setInterval(updateServiceChip, 60000);
+</script>
+
+</body>
+</html>
